@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [routerLink]="['/login']" showWhen="ios, android"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark" text-center>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="registryForm" (submit)="registry()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Cree su cuenta !</h3>
+          </div>
+
+          <div padding>
+            <ion-item>
+              <ion-label position="stacked">Nombre: <span style="color: red" ion-text *ngIf="registryForm.get('firstname').hasError('required')">*</span></ion-label>
+              <ion-input type="text" placeholder="Ingrese nombre" formControlName="firstname" clearInput></ion-input>
+            </ion-item>
+            <p *ngIf="registryForm.get('firstname').errors && registryForm.get('firstname').touched || registryForm.get('firstname').dirty">
+              <span style="color: red" ion-text *ngIf="registryForm.get('firstname').hasError('required')">Este valor es requerido</span>
+              <span style="color: red" ion-text *ngIf="registryForm.get('firstname').hasError('pattern')">Este campo no acepta números</span>
+            </p>
+
+            <ion-item>
+              <ion-label position="stacked">Apellido:<span style="color: red" ion-text *ngIf="registryForm.get('lastname').hasError('required')">*</span></ion-label>
+              <ion-input type="text" placeholder="Ingrese apellido" formControlName="lastname" clearInput></ion-input>
+            </ion-item>
+            <p *ngIf="registryForm.get('lastname').errors && registryForm.get('lastname').touched || registryForm.get('lastname').dirty">
+              <span style="color: red" ion-text *ngIf="registryForm.get('lastname').hasError('required')">Este valor es requerido</span>
+              <span style="color: red" ion-text *ngIf="registryForm.get('lastname').hasError('pattern')">Este campo no acepta números</span>
+            </p>
+
+            <ion-item>
+              <ion-label position="stacked">Identificación:<span style="color: red" ion-text *ngIf="registryForm.get('identification').hasError('required')">*</span></ion-label>
+              <ion-input type="text" maxlength="15" placeholder="Ingrese identificación" formControlName="identification" clearInput></ion-input>
+            </ion-item>
+            <p *ngIf="registryForm.get('identification').errors && registryForm.get('identification').touched || registryForm.get('identification').dirty">
+              <span style="color: red" ion-text *ngIf="registryForm.get('identification').hasError('required')">Este valor es requerido</span>
+              <span style="color: red" ion-text *ngIf="registryForm.get('identification').hasError('pattern')">Este campo no acepta letras</span>
+            </p>
+
+            <ion-item>
+              <ion-label position="stacked">Fecha Nacimiento:<span style="color: red" ion-text *ngIf="registryForm.get('birthdate').hasError('required')">*</span></ion-label>
+              <ion-datetime display-format="DD-MM-YYYY" placeholder="Ingrese fecha nacimiento" formControlName="birthdate"></ion-datetime>
+            </ion-item>
+            <p *ngIf="registryForm.get('birthdate').errors && registryForm.get('birthdate').touched || registryForm.get('birthdate').dirty">
+              <span style="color: red" ion-text *ngIf="registryForm.get('birthdate').hasError('required')">Este valor es requerido</span>
+            </p>
+          </div>
+
+          <div padding>
+            <ion-button type="submit" [disabled]="!registryForm.valid" color="danger" shape="round" expand="full">Registrarse</ion-button>
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

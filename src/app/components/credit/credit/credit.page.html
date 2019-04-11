@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon color="dark" slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title text-center color="dark">Credito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="creditForm" (submit)="approveCredit()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Solicitud y Aprobación de Credito</h3>
+          </div>
+
+          <div padding>
+            <ion-item>
+              <ion-label position="stacked">Nombre Empresa: <span style="color: red" ion-text *ngIf="creditForm.get('nameCompany').hasError('required')">*</span></ion-label>
+              <ion-input type="text" placeholder="Ingrese nombre empresa" formControlName="nameCompany" clearInput></ion-input>
+            </ion-item>
+            <p *ngIf="creditForm.get('nameCompany').errors && creditForm.get('nameCompany').touched || creditForm.get('nameCompany').dirty">
+              <span style="color: red" ion-text *ngIf="creditForm.get('nameCompany').hasError('required')">Este valor es requerido</span>
+              <span style="color: red" ion-text *ngIf="creditForm.get('nameCompany').hasError('pattern')">Este campo no acepta números</span>
+            </p>
+
+            <ion-item>
+              <ion-label position="stacked">NIT Empresa:<span style="color: red" ion-text *ngIf="creditForm.get('nit').hasError('required')">*</span></ion-label>
+              <ion-input type="text" maxlength="20" placeholder="Ingrese NIT" formControlName="nit" clearInput></ion-input>
+            </ion-item>
+            <p *ngIf="creditForm.get('nit').errors && creditForm.get('nit').touched || creditForm.get('nit').dirty">
+              <span style="color: red" ion-text *ngIf="creditForm.get('nit').hasError('nit')">Este valor es requerido</span>
+              <span style="color: red" ion-text *ngIf="creditForm.get('nit').hasError('pattern')">Este campo no acepta letras</span>
+            </p>
+
+            <ion-item>
+              <ion-label position="stacked">Salario Actual:<span style="color: red" ion-text *ngIf="creditForm.get('salary').hasError('required')">*</span></ion-label>
+              <ion-input type="text" min="0" max="100000000" maxlength="9" placeholder="Ingrese salario actual" formControlName="salary" clearInput></ion-input>
+            </ion-item>
+            <p *ngIf="creditForm.get('salary').errors && creditForm.get('salary').touched || creditForm.get('salary').dirty">
+              <span style="color: red" ion-text *ngIf="creditForm.get('salary').hasError('required')">Este valor es requerido</span>
+              <span style="color: red" ion-text *ngIf="creditForm.get('salary').hasError('pattern')">Este campo no acepta letras</span>
+            </p>
+
+            <ion-item>
+              <ion-label position="stacked">Fecha Ingreso:<span style="color: red" ion-text *ngIf="creditForm.get('dateCompany').hasError('required')">*</span></ion-label>
+              <ion-datetime display-format="DD-MM-YYYY" placeholder="Fecha de ingreso a la empresa" formControlName="dateCompany"></ion-datetime>
+            </ion-item>
+            <p *ngIf="creditForm.get('dateCompany').errors && creditForm.get('dateCompany').touched || creditForm.get('dateCompany').dirty">
+              <span style="color: red" ion-text *ngIf="creditForm.get('dateCompany').hasError('required')">Este valor es requerido</span>
+            </p>
+          </div>
+
+          <div padding>
+            <ion-button type="submit" [disabled]="!creditForm.valid" color="danger" shape="round" expand="full">Solicitar</ion-button>
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>
