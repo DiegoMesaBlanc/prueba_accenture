@@ -22,7 +22,7 @@ de comandos **npm install** para descargar nuestras dependencias
 
 ### Ruta .apk ⌨️
 
-* [APK](\platforms\android\app\build\outputs\apk\debug)
+* [APK](https://github.com/DiegoMesaBlanc/prueba_accenture/blob/master/prueba_accenture.apk)
 
 
 
@@ -33,7 +33,4 @@ de comandos **npm install** para descargar nuestras dependencias
 
 ## Expresiones de Gratitud 🎁
 
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
+* Invita una cerveza 🍺 a alguien del equipo.
